@@ -2,13 +2,13 @@
     box-sizing: border-box;
 }
 
+
 body {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
 }
 
@@ -16,11 +16,11 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    flex-grow: 1;
     background-color: rgba(0, 0, 0, 0.8);
     font-size: 30px;
     font-weight: 900;
     color: white;
+    min-height: 10vh;
     width: 100%;
     padding-left: 30px;
 }
@@ -34,6 +34,7 @@ body {
 #main-content {
     display: flex;
     justify-content: flex-start;
+    align-items: flex-start;
     flex-grow: 10;
     width: 100%;
 }
@@ -41,9 +42,11 @@ body {
 #list-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     justify-content: flex-start;
+    min-height: 90vh;
+    width: 85%;
     padding: 0 15%;
+    background-color: rgb(240, 240, 240);
 }
 
 h2 {
@@ -55,11 +58,11 @@ h2 {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    align-self: stretch;
     background-color: rgb(201, 201, 201);
     gap: 10px;
     padding: 1%;
     width: 15%;
-    height: 100%;
 }
 
 #navbar-container>div>svg, .add-task>svg {
@@ -88,34 +91,80 @@ h2 {
     cursor: pointer;
 }
 
+.add-task {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+}
+
 .add-task:hover {
     background-color: hsl(0, 0%, 90%);
     border-radius: 10px;
     cursor: pointer;
 }
 
-#list-container {
+#task-list-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: 85%;
-    height: 100%;
+    max-height: 70vh;
+    width: 100%;
+    gap: 10px;
+    padding: 0 10px 0 0;
+    overflow: scroll;
 }
 
-.add-task {
+.todo {
     display: flex;
     align-items: center;
     width: 100%;
-    height: 40px;
+    min-height: 40px;
+    border-radius: 10px;
+    cursor: default;
+    padding: 0 10px;
+    gap: 8px;
+    overflow: scroll;
+}
+
+.todo>input {
+    cursor: pointer;
+    margin: 0 5px 0 0;
+}
+
+.todo>svg {
+    width: 20px;
+    height: auto;
+}
+
+.todo>svg:hover {
+    background-color: hsl(0, 0%, 80%);
+    cursor: pointer;
+}
+
+.todo-date {
+    display: flex;
+    margin-left: auto;
+}
+
+#form-overlay {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+    width: 100%;
+    height: 100%;
 }
 
 #new-task-container {
     display: flex;
+    position: absolute;
     flex-direction: column;
     justify-content: space-around;
     height: 80%;
-    width: 60%;
+    width: 55%;
+    margin-top: 20px;
     background-color: beige;
     padding: 3%;
 }
@@ -161,7 +210,7 @@ label[for='new-task-date'] {
     gap: 10%;
 }
 
-button {
+.button {
     width: 25%;
     font-size: 30px;
     padding: 0;
